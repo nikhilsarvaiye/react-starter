@@ -31,20 +31,22 @@ export const Record = () => {
     };
 
     const handleAudioUpload = async (file: any) => {
-        console.log(file);
-        const service = new Service();
-        setSpinner(true);
-        setResult(null);
-        message.info('Kindly wait while we process...');
-        try {
-            const result = await service.predictFile(file);
-            setResult(result as any);
-            message.success('Successfully predicted.');
-        } catch (e: any) {
-            message.error('Something went wrong.');
+        if (file) {
+            console.log(file);
+            const service = new Service();
+            setSpinner(true);
             setResult(null);
-        } finally {
-            setSpinner(false);
+            message.info('Kindly wait while we process...');
+            try {
+                const result = await service.predictFile(file);
+                setResult(result as any);
+                message.success('Successfully predicted.');
+            } catch (e: any) {
+                message.error('Something went wrong.');
+                setResult(null);
+            } finally {
+                setSpinner(false);
+            }
         }
     };
 
@@ -76,7 +78,7 @@ export const Record = () => {
             >
                 <Recorder
                     record={true}
-                    title={'New recording'}
+                    title={'Record'}
                     audioURL={audio.audioDetails.url}
                     showUIAudio
                     handleAudioStop={(data: any) => handleAudioStop(data)}

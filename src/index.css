@@ -80,10 +80,10 @@ code {
 .app-side-nav .ant-menu-light .ant-menu-submenu-title:hover {
     color: #fff !important;
 }
-.app-side-nav .ant-menu:not(.ant-menu-horizontal):hover,
+.app-side-nav .ant-menu:not(.ant-menu-horizontal) .ant-menu-item:hover,
 .app-side-nav .ant-menu:not(.ant-menu-horizontal) a:hover,
 .app-side-nav .ant-menu:not(.ant-menu-horizontal) .anticon:hover {
-    background-color: #286bd0 !important;
+    background-color: #1f62c5 !important;
     color: #fff;
 }
 .app-side-nav .ant-menu-inline .ant-menu-item,
