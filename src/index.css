@@ -17,13 +17,20 @@ code {
 .app-header .logo-container {
     background-color: #267dff;
     color: #fff;
-    width: 139px;
+    width: 137px;
+    padding: 1em;
+    height: 4rem;
+}
+.app-header .logo-container img {
+    height: 100%;
+    width: 100%;
 }
 .app-header .top-navigation {
     width: 100%;
 }
 .app-body {
     display: flex;
+    background-color: #f2f2f2;
 }
 .app-side-nav .ant-menu {
     background-color: #267dff;
@@ -38,7 +45,7 @@ code {
     background-color: #267dff;
 }
 .app-side-nav .ant-menu-item {
-  padding: 1.5em 0 !important;
+    padding: 1.5em 0 !important;
 }
 .app-side-nav .ant-menu li {
     font-size: 1.2em;
@@ -65,7 +72,10 @@ code {
 .app-side-nav .ant-menu:not(.ant-menu-horizontal) a,
 .app-side-nav .ant-menu-light .ant-menu-item:hover,
 .app-side-nav .ant-menu-light .ant-menu-item-active,
-.app-side-nav .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.app-side-nav
+    .ant-menu-light
+    .ant-menu:not(.ant-menu-inline)
+    .ant-menu-submenu-open,
 .app-side-nav .ant-menu-light .ant-menu-submenu-active,
 .app-side-nav .ant-menu-light .ant-menu-submenu-title:hover {
     color: #fff !important;
@@ -81,10 +91,34 @@ code {
     width: 100% !important;
 }
 .app-side-nav .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
-.app-side-nav .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected:hover {
+.app-side-nav
+    .ant-menu:not(.ant-menu-horizontal)
+    .ant-menu-item-selected:hover {
     background-color: #286bd0 !important;
     color: #fff;
 }
 .app-side-nav .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected a {
     color: #fff;
+}
+
+/* Recorder */
+._1ceqH ._1lB9c {
+    background: #267dff !important;
+    display: none !important;
+}
+
+._1ceqH ._1lB9c h2 {
+    color: #fff !important;
+}
+
+._1ceqH ._3bC73 {
+    background-color: #fff;
+}
+._1ceqH ._1YOWG ._eV_dK,
+._1ceqH ._f2DT8 * {
+    color: #000 !important;
+}
+._1ceqH ._1Yplu {
+    display: flex;
+    justify-content: center;
 }

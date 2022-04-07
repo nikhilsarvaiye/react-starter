@@ -7,12 +7,15 @@ import { TopNavigation } from './components/TopNavigation';
 import { SideNavigation } from './components/SideNavigation';
 import { Home } from './components/Home';
 import { Home2 } from './components/Home2';
+import { Home3 } from './components/Home3';
 
 const App: FC = () => (
     <div className="app">
         <BrowserRouter>
             <div className="app-header">
-                <div className="logo-container"></div>
+                <div className="logo-container">
+                    <img src={'logo_transparent.png'}/>
+                </div>
                 <div className="top-navigation">
                     <TopNavigation />
                 </div>
@@ -26,6 +29,7 @@ const App: FC = () => (
                         <Route path="/" element={<Home />} />
                         <Route path="home" element={<Home />} />
                         <Route path="home2" element={<Home2 />} />
+                        <Route path="home3" element={<Home3 />} />
                     </Routes>
                 </div>
             </div>

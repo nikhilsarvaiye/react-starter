@@ -21,7 +21,7 @@ export const TopNavigation: FC = () => {
             style={{
                 justifyContent: 'end',
                 alignItems: 'center',
-                height: '4em',
+                height: '4rem',
             }}
         >
             <Menu.Item key="user" icon={<UserOutlined />}>
