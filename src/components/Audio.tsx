@@ -52,7 +52,6 @@ export const Audio = () => {
                     height: '20em',
                 }}
             >
-                <div>{JSON.stringify(files)}</div>
                 <Dragger
                     {...{
                         name: 'file',

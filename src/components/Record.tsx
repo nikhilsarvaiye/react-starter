@@ -65,7 +65,6 @@ export const Record = () => {
         setAudio({ audioDetails: reset });
     };
 
-    console.log(Recorder);
     return (
         <Spin spinning={spinner}>
             {result && (
