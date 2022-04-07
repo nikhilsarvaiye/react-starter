@@ -26,10 +26,10 @@ export const SideNavigation: FC = () => {
                 <Link to="/home">Input Text</Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<UploadOutlined />}>
-                <Link to="/home2">Audio File</Link>
+                <Link to="/Audio">Audio File</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<UploadOutlined />}>
-                <Link to="/home3">Audio Record</Link>
+            <Menu.Item key="3" icon={<UploadOutlined />}>
+                <Link to="/Record">Audio Record</Link>
             </Menu.Item>
         </Menu>
     );
