@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+.app-header {
+    display: flex;
+}
+.app-header .logo-container {
+    background-color: #267dff;
+    color: #fff;
+    width: 139px;
+}
+.app-header .top-navigation {
+    width: 100%;
+}
+.app-body {
+    display: flex;
+}
+.app-side-nav .ant-menu {
+    background-color: #267dff;
+}
+.app-content {
+    margin: 2em;
+    width: 100%;
+}
+.app-side-nav {
+    min-height: 94vh;
+    height: 100%;
+    background-color: #267dff;
+}
+.app-side-nav .ant-menu-item {
+  padding: 1.5em 0 !important;
+}
+.app-side-nav .ant-menu li {
+    font-size: 1.2em;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin: 0 !important;
+    height: auto;
+    padding: 2rem 0;
+    line-height: 1em;
+    color: #000;
+}
+.app-side-nav .ant-menu li .anticon {
+    margin-bottom: 0.5em;
+    color: #fff;
+}
+.app-side-nav .ant-menu li {
+    font-size: 1em;
+}
+/*andt*/
+
+.app-side-nav .ant-menu:not(.ant-menu-horizontal),
+.app-side-nav .ant-menu:not(.ant-menu-horizontal) a,
+.app-side-nav .ant-menu-light .ant-menu-item:hover,
+.app-side-nav .ant-menu-light .ant-menu-item-active,
+.app-side-nav .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.app-side-nav .ant-menu-light .ant-menu-submenu-active,
+.app-side-nav .ant-menu-light .ant-menu-submenu-title:hover {
+    color: #fff !important;
+}
+.app-side-nav .ant-menu:not(.ant-menu-horizontal):hover,
+.app-side-nav .ant-menu:not(.ant-menu-horizontal) a:hover,
+.app-side-nav .ant-menu:not(.ant-menu-horizontal) .anticon:hover {
+    background-color: #286bd0 !important;
+    color: #fff;
+}
+.app-side-nav .ant-menu-inline .ant-menu-item,
+.app-side-nav .ant-menu-inline .ant-menu-submenu-title {
+    width: 100% !important;
+}
+.app-side-nav .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
+.app-side-nav .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected:hover {
+    background-color: #286bd0 !important;
+    color: #fff;
+}
+.app-side-nav .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected a {
+    color: #fff;
+}
