@@ -1,17 +1,8 @@
-import {
-    Form,
-    Input,
-    Button,
-    Checkbox,
-    Spin,
-    message,
-    Card,
-    Result,
-} from 'antd';
 import { useState } from 'react';
+import { Form, Input, Button, Spin, message, Card } from 'antd';
 import { Service } from '../services/service';
 
-export const Home = () => {
+export const Text = () => {
     const [spinner, setSpinner] = useState(false);
     const [result, setResult] = useState<{
         model_string: string;
