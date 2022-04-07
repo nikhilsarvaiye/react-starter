@@ -100,6 +100,10 @@ code {
 .app-side-nav .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected a {
     color: #fff;
 }
+.ant-upload-list-text .ant-upload-span, .ant-upload-list-picture .ant-upload-span {
+    background-color: #ffffff;
+    padding: 1rem;
+}
 
 /* Recorder */
 ._1ceqH ._1lB9c {

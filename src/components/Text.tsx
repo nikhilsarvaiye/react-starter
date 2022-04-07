@@ -35,15 +35,6 @@ export const Text = () => {
 
     return (
         <Spin spinning={spinner}>
-            {result && (
-                <Card
-                    title="Result"
-                    style={{ width: '70%', marginBottom: '3em' }}
-                >
-                    <p>{result?.model_string}</p>
-                    <p>{result?.prediction}</p>
-                </Card>
-            )}
             <Form
                 name="basic"
                 labelCol={{ span: 8 }}
@@ -64,15 +55,24 @@ export const Text = () => {
                         { required: true, message: 'Please input your text!' },
                     ]}
                 >
-                    <Input.TextArea rows={18} />
+                    <Input.TextArea rows={14} />
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit" loading={spinner}>
                         Predict
                     </Button>
                 </Form.Item>
             </Form>
+            {result && (
+                <Card
+                    title="Result"
+                    style={{ width: '70%', marginBottom: '3em' }}
+                >
+                    <p>{result?.model_string}</p>
+                    <p>{result?.prediction}</p>
+                </Card>
+            )}
         </Spin>
     );
 };

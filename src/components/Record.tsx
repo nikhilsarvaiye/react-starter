@@ -10,6 +10,7 @@ export const Record = () => {
     const [result, setResult] = useState<{
         model_string: string;
         prediction: string;
+        result: string;
     } | null>(null);
     const [audio, setAudio] = useState({
         audioDetails: {
@@ -67,15 +68,6 @@ export const Record = () => {
 
     return (
         <Spin spinning={spinner}>
-            {result && (
-                <Card
-                    title="Result"
-                    style={{ width: '70%', marginBottom: '3em' }}
-                >
-                    <p>{result?.model_string}</p>
-                    <p>{result?.prediction}</p>
-                </Card>
-            )}
             <div
                 style={{
                     width: '70%',
@@ -94,6 +86,16 @@ export const Record = () => {
                     mimeTypeToUseWhenRecording={`audio/webm`} // For specific mimetype.
                 />
             </div>
+            {result && (
+                <Card
+                    title="Result"
+                    style={{ width: '70%', marginBottom: '3em' }}
+                >
+                    <p>{result?.model_string}</p>
+                    <p>{result?.prediction}</p>
+                    <p>{result?.result}</p>
+                </Card>
+            )}
         </Spin>
     );
 };

@@ -13,9 +13,15 @@ export class Service {
         return await api.post(this.url + `/predict`, text);
     };
 
+    predictCsv = async (file: File) => {
+        const data = new FormData();
+        data.append('file', file);
+        return await api.post(`/uploadcsv`, data);
+    };
+
     predictFile = async (file: File) => {
         const data = new FormData();
         data.append('file', file);
-        return await api.post(`/upload`, data);
+        return await api.post(`/audiouplod`, data);
     };
 }

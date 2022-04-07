@@ -1,32 +1,35 @@
 import { useState } from 'react';
-import { Spin, Upload, message, Button, Card } from 'antd';
+import { Spin, Upload, message, Button, Card, Table } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { Service } from '../services/service';
 
 const { Dragger } = Upload;
 
-export const Audio = () => {
+export const Csv = () => {
     const [spinner, setSpinner] = useState(false);
-    const [result, setResult] = useState<{
-        model_string: string;
-        prediction: string;
-    } | null>(null);
+    const [result, setResult] = useState<
+        {
+            dates_review_data: Date;
+            prediction_data: string;
+            row_data: string;
+        }[]
+    >([]);
     const [files, setFiles] = useState<any[]>([]);
 
     const predict = async () => {
         if (files.length) {
             const service = new Service();
             setSpinner(true);
-            setResult(null);
+            setResult([]);
             message.info('Kindly wait while we process...');
             try {
-                const result = await service.predictFile(files[0]);
+                const result = await service.predictCsv(files[0]);
                 setResult(result as any);
                 message.success('Successfully predicted.');
                 setFiles([]);
             } catch (e: any) {
                 message.error('Something went wrong.');
-                setResult(null);
+                setResult([]);
             } finally {
                 setTimeout(() => {
                     setSpinner(false);
@@ -37,15 +40,6 @@ export const Audio = () => {
 
     return (
         <Spin spinning={spinner}>
-            {result && (
-                <Card
-                    title="Result"
-                    style={{ width: '70%', marginBottom: '3em' }}
-                >
-                    <p>{result?.model_string}</p>
-                    <p>{result?.prediction}</p>
-                </Card>
-            )}
             <div
                 style={{
                     width: '70%',
@@ -110,11 +104,34 @@ export const Audio = () => {
                         htmlType="submit"
                         onClick={predict}
                         disabled={files.length === 0}
+                        loading={spinner}
                     >
                         Predict
                     </Button>
                 </div>
             </div>
+            {result.length > 0 && (
+                <Table
+                    dataSource={result}
+                    columns={[
+                        {
+                            title: 'Date',
+                            dataIndex: 'date',
+                            key: 'date',
+                        },
+                        {
+                            title: 'Data',
+                            dataIndex: 'data',
+                            key: 'data',
+                        },
+                        {
+                            title: 'Prediction',
+                            dataIndex: 'prediction',
+                            key: 'prediction',
+                        },
+                    ]}
+                ></Table>
+            )}
         </Spin>
     );
 };

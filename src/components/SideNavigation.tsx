@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import { UploadOutlined, CopyOutlined,  } from '@ant-design/icons';
+import { UploadOutlined, CopyOutlined, AudioOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 
 const { SubMenu } = Menu;
@@ -23,13 +23,13 @@ export const SideNavigation: FC = () => {
             mode="inline"
         >
             <Menu.Item key="1" icon={<CopyOutlined />}>
-                <Link to="/home">Input Text</Link>
+                <Link to="/text">Input Text</Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<UploadOutlined />}>
-                <Link to="/Audio">Audio File</Link>
+                <Link to="/csv">Input CSV</Link>
             </Menu.Item>
-            <Menu.Item key="3" icon={<UploadOutlined />}>
-                <Link to="/Record">Audio Record</Link>
+            <Menu.Item key="3" icon={<AudioOutlined />}>
+                <Link to="/record">Audio Record</Link>
             </Menu.Item>
         </Menu>
     );

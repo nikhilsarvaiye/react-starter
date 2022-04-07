@@ -1,13 +1,12 @@
 import { FC } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Button } from 'antd';
-import 'antd/dist/antd.css';
-import './App.css';
 import { TopNavigation } from './components/TopNavigation';
 import { SideNavigation } from './components/SideNavigation';
 import { Text } from './components/Text';
-import { Audio } from './components/Audio';
+import { Csv } from './components/Csv';
 import { Record } from './components/Record';
+import 'antd/dist/antd.css';
+import './App.css';
 
 const App: FC = () => (
     <div className="app">
@@ -27,9 +26,9 @@ const App: FC = () => (
                 <div className="app-content">
                     <Routes>
                         <Route path="/" element={<Text />} />
-                        <Route path="home" element={<Text />} />
-                        <Route path="Audio" element={<Audio />} />
-                        <Route path="Record" element={<Record />} />
+                        <Route path="text" element={<Text />} />
+                        <Route path="csv" element={<Csv />} />
+                        <Route path="record" element={<Record />} />
                     </Routes>
                 </div>
             </div>
