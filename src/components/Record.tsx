@@ -1,11 +1,30 @@
 import { useState } from 'react';
-import { Spin, message, Card } from 'antd';
+import { Spin, message, Card, Button } from 'antd';
 import 'react-voice-recorder/dist/index.css';
 import { Service } from '../services/service';
+import { useReactMediaRecorder } from 'react-media-recorder';
 const RecorderLib = require('react-voice-recorder');
 const Recorder = RecorderLib.Recorder;
 
+const RecordView = () => {
+    const { status, startRecording, stopRecording, mediaBlobUrl } =
+        useReactMediaRecorder({ video: false });
+
+    return (
+        <div>
+            <p>{status}</p>
+            <button onClick={startRecording}>Start Recording</button>
+            <button onClick={stopRecording}>Stop Recording</button>
+            {/* <video src={mediaBlobUrl || ''} controls autoPlay loop /> */}
+            <audio src={mediaBlobUrl || ''} controls autoPlay loop />
+        </div>
+    );
+};
+
 export const Record = () => {
+    const { status, startRecording, stopRecording, mediaBlobUrl } =
+        useReactMediaRecorder({ video: false });
+
     const [spinner, setSpinner] = useState(false);
     const [result, setResult] = useState<{
         model_string: string;
@@ -32,13 +51,41 @@ export const Record = () => {
 
     const handleAudioUpload = async (file: any) => {
         if (file) {
+            debugger;
+            let blob = await fetch(mediaBlobUrl || '');
+            file = await blob.blob();
             console.log(file);
             const service = new Service();
             setSpinner(true);
             setResult(null);
+            const f = new File([file], 'filename.wav');
             message.info('Kindly wait while we process...');
             try {
                 const result = await service.predictFile(file);
+                setResult(result as any);
+                message.success('Successfully predicted.');
+            } catch (e: any) {
+                message.error('Something went wrong.');
+                setResult(null);
+            } finally {
+                setSpinner(false);
+            }
+        }
+    };
+
+    const predict = async () => {
+        if (mediaBlobUrl) {
+            debugger;
+            let blob = await fetch(mediaBlobUrl || '');
+            const file = await blob.blob();
+            console.log(file);
+            const service = new Service();
+            setSpinner(true);
+            setResult(null);
+            const f = new File([file], 'filename.wav');
+            message.info('Kindly wait while we process...');
+            try {
+                const result = await service.predictFile(file as any);
                 setResult(result as any);
                 message.success('Successfully predicted.');
             } catch (e: any) {
@@ -87,6 +134,28 @@ export const Record = () => {
                     handleReset={() => handleReset()}
                     mimeTypeToUseWhenRecording={`audio/webm`} // For specific mimetype.
                 />
+            </div>
+            <div
+                style={{
+                    marginTop: '10rem'
+                }}
+            >
+                <div>
+                    <p>{status}</p>
+                    <button onClick={startRecording}>Start Recording</button>
+                    <button onClick={stopRecording}>Stop Recording</button>
+                    {/* <video src={mediaBlobUrl || ''} controls autoPlay loop /> */}
+                    <audio src={mediaBlobUrl || ''} controls autoPlay loop />
+                </div>
+                <Button
+                    type="primary"
+                    htmlType="submit"
+                    onClick={predict}
+                    disabled={!mediaBlobUrl}
+                    loading={spinner}
+                >
+                    Predict
+                </Button>
             </div>
             {result && (
                 <Card

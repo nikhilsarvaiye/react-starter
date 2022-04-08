@@ -1,9 +1,22 @@
 import { useState } from 'react';
 import { Spin, Upload, message, Button, Card, Table } from 'antd';
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 import { InboxOutlined } from '@ant-design/icons';
 import { Service } from '../services/service';
 
 const { Dragger } = Upload;
+
+const options = {
+    title: {
+        text: 'Test chart',
+    },
+    series: [
+        {
+            data: [1, 2, 3],
+        },
+    ],
+};
 
 export const Csv = () => {
     const [spinner, setSpinner] = useState(false);
@@ -44,6 +57,7 @@ export const Csv = () => {
                 style={{
                     width: '70%',
                     height: '20em',
+                    marginBottom: '8rem'
                 }}
             >
                 <Dragger
@@ -111,27 +125,34 @@ export const Csv = () => {
                 </div>
             </div>
             {result.length > 0 && (
-                <Table
-                    dataSource={result}
-                    columns={[
-                        {
-                            title: 'Date',
-                            dataIndex: 'date',
-                            key: 'date',
-                        },
-                        {
-                            title: 'Data',
-                            dataIndex: 'data',
-                            key: 'data',
-                        },
-                        {
-                            title: 'Prediction',
-                            dataIndex: 'prediction',
-                            key: 'prediction',
-                        },
-                    ]}
-                ></Table>
+                <div
+                    style={{
+                        marginTop: '3rem',
+                    }}
+                >
+                    <Table
+                        dataSource={result}
+                        columns={[
+                            {
+                                title: 'Date',
+                                dataIndex: 'date',
+                                key: 'date',
+                            },
+                            {
+                                title: 'Data',
+                                dataIndex: 'data',
+                                key: 'data',
+                            },
+                            {
+                                title: 'Prediction',
+                                dataIndex: 'prediction',
+                                key: 'prediction',
+                            },
+                        ]}
+                    ></Table>
+                </div>
             )}
+            <HighchartsReact highcharts={Highcharts} options={options} />
         </Spin>
     );
 };

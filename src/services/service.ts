@@ -7,21 +7,22 @@ const api = axios.create({
 });
 
 export class Service {
-    url = 'http://localhost:5000';
+    url = 'http://127.0.0.1:5000';
 
     predictText = async (text: string) => {
-        return await api.post(this.url + `/predict`, text);
+        return (await api.post(this.url + `/predict`, { data: text })).data;
     };
 
     predictCsv = async (file: File) => {
         const data = new FormData();
         data.append('file', file);
-        return await api.post(`/uploadcsv`, data);
+        return (await api.post(`/uploadcsv`, data)).data;
     };
 
     predictFile = async (file: File) => {
+        debugger
         const data = new FormData();
         data.append('file', file);
-        return await api.post(`/audiouplod`, data);
+        return (await api.post(`${this.url}/audioupload`, data)).data;
     };
 }
